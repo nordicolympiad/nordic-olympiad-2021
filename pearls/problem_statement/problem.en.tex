@@ -1,0 +1,72 @@
+\problemname{Pearls}
+\noindent
+Laura likes to create pretty necklaces with pearls. 
+She has two neckalces $A$ and $B$, which she would like to use as templates to create a new necklace.
+A necklace is represented by a string, where each character represents the color of a bead on the necklace.
+
+Laura furthermore has a group of $k$ colour pairs $S_1, \cdots, S_k$, 
+she really doesn't like because theya re ugly in that colour and order, 
+so she attempts to avoid them when creating her new necklace.
+
+Laura will create her new necklace in a particular way. 
+For each pearl in necklace $A$ from the start, 
+she is going to combine its colour with the colour of each of 
+the pearls from necklace $B$.
+
+For each pearl in necklace $A$, $A_i$, 
+she looks at each pearl in necklace $B$, $B_j$.
+If the combination $A_iB_j$ is not an ugly combination, she puts pearls of colour $A_iB_j$ at the end of her new necklace.
+If it is an ugly combination, she does nothing. 
+Note that Laura only looks for ugly combinations when constructing the necklace, not after they have been added to the new necklace.
+
+Help Laura determine what her new neckalce is going to look like. Laura has $q$ questions, where the $i$'th one, $t_i$ asks for the colour of the $t_i$'th pearl on the new necklace.
+
+\section*{Input}
+The first line contains four integers $L_A, L_B, k$ and $q$. 
+These are the length of $A$, the length of $B$, the number of ugly combinations and the number of questions resepctively.
+
+The next line contains the string $A$, consisting of exactly $L_A$ characters from the set $[a-z]$.
+
+The next line contains the string $B$, consisting of exactly $L_B$ characters from the set $[a-z]$.
+
+The next $k$ lines contain the ugly combinations, one combination per line. 
+These combinations are written as strings containing exactly 2 characters from the set $[a-z]$, separated with a single space.
+
+The next $q$ lines are the positions for which Laura wants to know the color of the bead in the final necklace. 
+0 is the first position in the necklace.
+
+\section*{Output}
+Output should contain $q$ lines, each containing a single character from the set $[a-z]$, representing the answers to Laura's questions in the same order they were given.
+
+\section*{Constraints}
+$1 \le L_A, L_B \le 2\cdot 10^5$
+\newline
+$1 \le q \le  10^5$
+\newline
+$0 \le k < 26^2$
+\newline
+All queries refer to a valid position in the final necklace.
+
+\section*{Scoring}
+Your solution will be tested on a set of test groups, each worth a number of points. 
+Each test group contains a set of test cases. 
+To get the points for a test group you need to solve all test cases in the test group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $7$        & $L_A = 1$  \\ \hline
+  $2$    & $9$        & $L_A, L_B \le 1000$ \\ \hline
+  $3$    & $13$       & $k = 0$ \\ \hline
+  $4$    & $15$       & $q \le 10$ \\ \hline 
+  $5$    & $56$       & No additional constraints. \\ \hline
+\end{tabular}
+
+\section*{Explanation of Sample 1:}
+Laura creates the necklace \texttt{ac ac ac bc bc cc cc bc bc} (spaces inserted for ease of reading).
+No ugly terms were removed.
+
+\section*{Explanation of Sample 2:}
+Laura creates the necklace \texttt{ca cc ba ac ac} (spaces inserted for ease of reading).
+The terms \texttt{bc}, \texttt{aa} and \texttt{aa} were removed because they are ugly.
