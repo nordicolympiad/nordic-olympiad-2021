@@ -86,7 +86,7 @@ queries = []
 if mode != "even":
     queries.append(maxInd)
 
-for i in range(q):
+while len(queries) < q:
     t = random.randint(0,maxInd)
     if mode == "even":
         t -= t%2
