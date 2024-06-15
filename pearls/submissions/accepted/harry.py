@@ -58,7 +58,7 @@ for _ in range(q):
         pref = prefixes[ord(a[charind])-ord("a")]
 
         l = 1
-        r = len(a)
+        r = len(pref)
         pairInd -= necklacePrefix[charind]
         
         while l<r:
