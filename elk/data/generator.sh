@@ -25,10 +25,12 @@ sample 2
 group group1 10
 limits maxN=10 maxM=45
 include_group sample
-tc g1-edge1 gen_tree n=2
+#tc g1-edge1 gen_tree n=2    # Ska vi sätta M>1 istället?
+tc g1-edge1 gen_random n=3 m=2 dist=2
 tc g1-edge2 gen_tree n=3
 tc g1-edge3 gen_tree n=4
-tc g1-line gen_tree n=10 modeTree='line'
+tc g1-line1 gen_tree n=10 modeTree='line'
+tc g1-line2 gen_random n=10 m=9 dist=9
 tc g1-tree1 gen_tree n=10 modeTree='random'
 tc g1-tree2 gen_tree n=10 modeTree='deep'
 tc g1-random01 gen_random n=3 m=3
@@ -44,7 +46,8 @@ limits mode="tree"
 tc g1-edge1
 tc g1-edge2
 tc g1-edge3
-tc g1-line
+tc g1-line1
+tc g1-line2
 tc g1-tree1
 tc g1-tree2
 tc g2-small1 gen_tree n=200 modeTree='line'
