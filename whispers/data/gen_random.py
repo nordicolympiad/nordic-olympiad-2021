@@ -15,61 +15,53 @@ def arg(name, default=None):
 
 random.seed(int(arg('seed', sys.argv[-1])))
 
-mode = arg('mode','none')
+mode = arg('mode','random')
 
-n = int(arg('n', 5*10**4))
-m = int(arg('m', random.randint(2,min(10**5,n*(n-1)//2))))
+n = int(arg('n', random.randint(2,20)))
+m = int(arg('m', random.randint(2,1000)))
 
-assert m <= n*(n-1)//2
+a = random.randint(0,n-1)
+b = random.randint(n*m-n,n*m-1)
 
-dist = int(arg('dist',random.randint(1,min(n-1,m)))) # Distance between a and b
+graph = [[] for _ in range(n*m)]
 
 usedEdges = set()
 
+# Generate base edges
+for i in range(m-1):
+    poss = [*range((i+1)*n,(i+2)*n)]
+    random.shuffle(poss)
 
-graph = [[] for _ in range(n)]
+    for j in range(n):
+        graph[j+i*n].append(poss.pop())
+        usedEdges.add((j+i*n,graph[j+i*n][-1]))
 
-a = random.randint(0,n-1) # Random starting node
+# (m-1)*n
 
-unused = []
-for i in range(n):
-    if i != a: unused.append(i)
-random.shuffle(unused)
+maxEdges = (m-1)*n*n
 
-curr = a
-while len(usedEdges) < dist:
-    nxt = unused.pop()
-    if nxt < curr:
-        usedEdges.add((nxt,curr))
-    else:
-        usedEdges.add((curr,nxt))
-
-    curr = nxt
-
-b = curr 
+K = int(arg('K',min(5000,maxEdges)))
 
 
-while len(usedEdges) < m:
-    
-    x,y = random.randint(0,n-1), random.randint(0,n-1)
-    if x == y:
-        continue
-    if y < x:
-        x,y=y,x
-    
-    usedEdges.add((x,y))
-
+if mode == "random":
+    while len(usedEdges) < K:
+        start = random.randint(0,m-2)*n 
+        nxt = start+n
+        
+        start += random.randint(0,n-1)
+        nxt += random.randint(0,n-1)
+        if (start,nxt) in usedEdges:
+            continue
+        else:
+            usedEdges.add((start,nxt))
+            graph[start].append(nxt)
+elif mode == "empty":
+    pass
 
 print(n,m,a,b)
-
-out = list(usedEdges)
-random.shuffle(out)
-for x,y in out:
-    if random.randint(0,1):
-        print(x,y)
-    else:
-        print(y,x)
-    
+for i in range(n*(m-1)):
+    random.shuffle(graph[i])
+    print(len(graph[i]),*graph[i])    
     
 
 
