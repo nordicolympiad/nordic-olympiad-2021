@@ -4,7 +4,7 @@ PPATH=$(realpath ..)
 
 . ../../testdata_tools/gen.sh
 
-use_solution harry.py
+use_solution harry2.py
 
 compile gen_random.py
 compile gen_tree.py
@@ -84,7 +84,6 @@ tc g3-random05 gen_random n=200 m=500 dist=199
 tc g3-random06 gen_random n=200 m=500 
 
 group group4 40
-limits maxQ=10
 include_group sample
 include_group group2
 include_group group3
