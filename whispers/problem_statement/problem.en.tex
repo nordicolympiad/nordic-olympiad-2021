@@ -1,0 +1,62 @@
+\problemname{The Elk}
+\noindent
+You are in a forest. In this forest there is also a pair of elks 
+- a cow (an adult female) and her calf (child). As most 
+people know, it is dangerous to get between a cow and her calf, but it is not always clear how to avoid it.
+
+We model our forest as consisting of $N$ locations, and $M$ direct connections 
+between these locations. These connections can be travelled in either direction. 
+The locations are numbered $0$ to $N-1$ and connections are numbered $0$ to $M-1$.
+
+We define a path from the cow to the calf as a series of locations, $p_0, p_1, p_2, \ldots , p_k$ such that:
+\begin{enumerate}
+  \item $p_0$ is the location of the cow
+  \item $p_k$ is the location of the calf.
+  \item For each $i$ satisfying $0 \le i < k$, there is a direct connection between the locations $p_i$ and $p_{i+1}$
+  \item None of the connections from point 3 are repeated within the path. Note that we \textbf{do allow locations} to be repeated within the path.
+\end{enumerate}
+
+Clearly, any location that is on any such path is a dangerous place to be, 
+as the cow could consider you to be between her and the calf. Your task is to find all the safe locations - that is, the locations that are not on any such path.
+
+
+\section*{Input}
+The first line contains four integers, $N, M, A, B$. $N$ and $M$ are the 
+number of locations and direct connections respectively, while $A$ and $B$ are the current locations of the cow and the calf respectively.
+Next follows $M$ lines, numbered from $0$ to $M-1$, describing the $M$ connections. 
+The $i$th of these line contains two integers $U_i$ and $V_i$, indicating that $i$th connection is between locations $U_i$ and $V_i$.
+
+\section*{Output}
+The first line of output should contain a single integer $S$, the number of locations in the forest where it is safe to be.
+
+The next $S$ lines of output should be a list of all the safe locations, 
+one location per line, in increasing numerical order.
+
+\section*{Constraints}
+$2 \le N \le 5 \cdot 10^4$
+\newline
+$2 \le M \le 10^5$
+\newline
+$0 \le U_i, V_i < N$ for all $i$.
+\newline
+$U_i \neq V_i$ for all $i$.
+\newline
+There will be at most one direct connection between any pair of locations.
+\newline
+There will always be at least one path from the cow to the calf.
+
+\section*{Scoring}
+Your solution will be tested on a set of test groups, each worth a number of points. 
+Each test group contains a set of test cases. 
+To get the points for a test group you need to solve all test cases in the test group.
+
+\noindent
+\begin{tabular}{| l | l | p{12cm} |}
+  \hline
+  \textbf{Group} & \textbf{Point value} & \textbf{Constraints} \\ \hline
+  $1$    & $10$       & $N \le 10$, $M \le 45$  \\ \hline
+  $2$    & $20$       & $M = N-1$ and the graph is connected. \\ \hline
+  $3$    & $30$       & $N \le 200$, $M \le 500$ \\ \hline
+  $4$    & $40$       & No additional constraints. \\ \hline
+\end{tabular}
+
