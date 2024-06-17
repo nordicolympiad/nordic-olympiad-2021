@@ -17,87 +17,60 @@ random.seed(int(arg('seed', sys.argv[-1])))
 
 mode = arg('mode','none')
 
-la = int(arg('la', 2*10**5))
-lb = int(arg('lb', 2*10**5))
-k = int(arg('k', random.randint(0,26**2-1)))
-q = int(arg('q', 10**5))
+n = int(arg('n', 5*10**4))
+m = int(arg('m', random.randint(2,min(10**5,n*(n-1)//2))))
 
-alpha = int(arg('alpha',26))
-shift = random.randint(0,26-alpha)
-alphabet = [chr(x+ord("a") + shift) for x in range(alpha)]
+assert m <= n*(n-1)//2
 
-print(la,lb,k,q)
+dist = int(arg('dist',random.randint(1,min(n-1,m)))) # Distance between a and b
 
-a = [random.choice(alphabet) for _ in range(la)]
-b = [random.choice(alphabet) for _ in range(lb)]
-print("".join(a))
-print("".join(b))
-
-pairs = []
-used = set()
-while len(pairs) < k:
-    x,y = random.randint(0,25),random.randint(0,25)
-    if (x,y) in used:
-        continue
-    pairs.append([chr(x+ord("a")),chr(y+ord("a"))])
-    used.add((x,y))
-
-for x,y in pairs:
-    print(x,y)
+usedEdges = set()
 
 
+graph = [[] for _ in range(n)]
 
-def calcMaxInd(a,b,pairs):
-    edges = [set() for _ in range(ord("z")-ord("a")+1)]
-    for x,y in pairs:
-        edges[ord(x)-ord("a")].add(y)
+a = random.randint(0,n-1) # Random starting node
 
-    chars = []
-    prefixes = []
-    for ch in range(ord("z")-ord("a")+1):
-        temp = []
+unused = []
+for i in range(n):
+    if i != a: unused.append(i)
+random.shuffle(unused)
 
-        for x in b:
-            if x in edges[ch]:
-                temp.append(0)
-            else:
-                temp.append(1)
-        
-        chars.append(temp)
+curr = a
+while len(usedEdges) < dist:
+    nxt = unused.pop()
+    if nxt < curr:
+        usedEdges.add((nxt,curr))
+    else:
+        usedEdges.add((curr,nxt))
 
-        p = [0]
-        for v in temp:
-            p.append(v+p[-1])
-        prefixes.append(p)
+    curr = nxt
+
+b = curr 
 
 
-    necklacesCnt = [prefixes[ord(x)-ord("a")][-1] for x in a]
-    necklacePrefix = [0]
-    for v in necklacesCnt:
-        necklacePrefix.append(necklacePrefix[-1]+v)
+while len(usedEdges) < m:
     
-    return necklacePrefix[-1]
-
-maxInd = calcMaxInd(a,b,pairs)*2 - 1 
-
-assert(maxInd > 0)
-
-queries = []
-if mode != "even":
-    queries.append(maxInd)
-
-while len(queries) < q:
-    t = random.randint(0,maxInd)
-    if mode == "even":
-        t -= t%2
-    elif mode == "odd":
-        t += (t%2 == 0)
-
-    queries.append(t)
+    x,y = random.randint(0,n-1), random.randint(0,n-1)
+    if x == y:
+        continue
+    if y < x:
+        x,y=y,x
+    
+    usedEdges.add((x,y))
 
 
-random.shuffle(queries)
-for x in queries:
-    print(x)
+print(n,m,a,b)
+
+out = list(usedEdges)
+random.shuffle(out)
+for x,y in out:
+    if random.randint(0,1):
+        print(x,y)
+    else:
+        print(y,x)
+    
+    
+
 
 

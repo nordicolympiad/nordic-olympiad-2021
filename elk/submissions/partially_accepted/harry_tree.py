@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#@EXPECTED_GRADES@ WA AC WA WA
 
 # Should only get 20p
 
