@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# O(2^n*m) because the sus-array had multiple identical elements
+# O(2^m*n^2) because the sus-array had multiple identical elements
 
 # https://github.com/cheran-senthil/PyRival/blob/master/pyrival/graphs/hopcroft_karp.py
 def hopcroft_karp(graph, n, m):
