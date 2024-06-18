@@ -23,7 +23,8 @@ as the cow could consider you to be between her and the calf. Your task is to fi
 \section*{Input}
 The first line contains four integers, $N, M, A, B$. $N$ and $M$ are the 
 number of locations and direct connections respectively, while $A$ and $B$ are the current locations of the cow and the calf respectively.
-Next follows $M$ lines, numbered from $0$ to $M-1$, describing the $M$ connections. 
+
+The following $M$ lines, numbered from $0$ to $M-1$, each describe one of the $M$ connections. 
 The $i$th of these line contains two integers $U_i$ and $V_i$, indicating that $i$th connection is between locations $U_i$ and $V_i$.
 
 \section*{Output}
@@ -38,6 +39,8 @@ $2 \le N \le 5 \cdot 10^4$
 $2 \le M \le 10^5$
 \newline
 $0 \le U_i, V_i < N$ for all $i$.
+\newline
+$0 \leq A,B \leq N-1$ 
 \newline
 $U_i \neq V_i$ for all $i$.
 \newline

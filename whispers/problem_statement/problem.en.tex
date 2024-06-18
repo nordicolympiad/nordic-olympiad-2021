@@ -23,8 +23,7 @@ with person $p$ belonging to the group $\left \lfloor{p/N}\right \rfloor + 1 $. 
 
 Next follows $N \times (M - 1)$ lines. The $i$th of these describe whom the $i$th person acts as if they are whispering to.
 
-Each of these begin with a single number $K_i$, the number of people that person $i$ acts as if these lines begin with a single number $K_i$, 
-the number of people that person $i$ acts as if they are whispering to. Following this are $K_i$ integers, $R_{i,0} \ldots R_{i,K_i-1}$ specifying who those people are.
+Each of these begin with a single number $K_i$, the number of people that person $i$ acts as if they are whispering to. Following this are $K_i$ integers, $R_{i,0} \ldots R_{i,K_i-1}$ specifying who those people are.
 As these people will always belong to the next group after the one containing person $i$, these numbers will satisfy $\left \lfloor{R_{i,j}/N}\right \rfloor = \left \lfloor{i/N}\right \rfloor + 1$.
 
 \section*{Output}
