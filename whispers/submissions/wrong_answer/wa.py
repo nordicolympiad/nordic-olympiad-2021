@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Idea of a WA:
+# Idea for WA:
 # Start from A, for each of its possible nxt person and let's call it X, try to go there, and try to bipartite match the remaining.
 # If there is a matching when A-X, ( and don't check if then save in X that if X will be connected to B) then X is sus. 
 # 
