@@ -7,4 +7,4 @@ grading:
     show_test_data_groups: true
 type: scoring
 limits:
-  time_limit: 2.0
+  time_multiplier: 2

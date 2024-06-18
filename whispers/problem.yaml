@@ -6,5 +6,3 @@ grading:
     objective: max
     show_test_data_groups: true
 type: scoring
-limits:
-  time_limit: 1.0
