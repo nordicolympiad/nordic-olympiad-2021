@@ -21,11 +21,12 @@ n = int(arg('n', random.randint(2,20)))
 m = int(arg('m', random.randint(2,1000)))
 
 a = random.randint(0,n-1)
-b = random.randint(n*m-n,n*m-1)
 
 graph = [[] for _ in range(n*m)]
 
 usedEdges = set()
+
+currb = a
 
 # Generate base edges
 for i in range(m-1):
@@ -35,6 +36,11 @@ for i in range(m-1):
     for j in range(n):
         graph[j+i*n].append(poss.pop())
         usedEdges.add((j+i*n,graph[j+i*n][-1]))
+    
+    currb = graph[currb%n + i*n][0]
+
+b = currb
+
 
 # (m-1)*n
 

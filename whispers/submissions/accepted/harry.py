@@ -69,7 +69,10 @@ parent = [[] for _ in range(n*m)]
 
 sus = [a]
 for i in range(m-1):
+    
     nxtSus = []
+
+    used = [0]*n
     graph = [[*map(lambda x: int(x)%n, input().split())][1:] for _ in range(n)]
 
     for curr in sus:
@@ -87,11 +90,14 @@ for i in range(m-1):
             
             if res1.count(-1) == 1:
                 parent[i*n+n+choice].append(i*n + curr)
-                nxtSus.append(choice)
+
+                if not used[choice]:
+                    nxtSus.append(choice)
+                    used[choice] = 1
     
     sus,nxtSus = nxtSus,sus
 
-
+#print(parent)
 
 BFS = [b]
 couldBeSus = [0]*(n*m)
