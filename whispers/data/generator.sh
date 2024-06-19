@@ -7,6 +7,7 @@ PPATH=$(realpath ..)
 use_solution harry.py
 
 compile gen_random.py
+compile gen_permkill.py
 
 
 samplegroup
@@ -18,6 +19,7 @@ sample 2
 #  $2$    & $16$       & $M = 3$, $N \le 8$\\ \hline
 #  $3$    & $19$       & $M = 3$ \\ \hline
 #  $4$    & $47$       & No additional constraints. \\ \hline
+
 
 
 group group1 18
@@ -38,7 +40,7 @@ tc g1-large01 gen_random n=2 m=999
 tc g1-large02 gen_random n=2 m=1000 K=1998
 tc g1-large03 gen_random n=2 m=1000 K=3000 
 tc g1-large04 gen_random n=2 m=1000 K=2345
-
+tc g1-antiperm01 gen_permkill n=2 m=1000 
 
 # Min K = n*(m-1)
 # Max K = n*n*(m-1)
@@ -57,6 +59,8 @@ tc g2-random05 gen_random n=8 m=3 K=51
 tc g2-random07 gen_random n=8 m=3 K=16
 tc g2-random08 gen_random n=8 m=3 
 tc g2-random09 gen_random n=8 m=3 K=100
+tc g2-antiperm01 gen_permkill n=8 m=3 
+tc g2-antiperm02 gen_permkill n=8 m=3 
 
 group group3 19
 limits maxM=3 minM=3
@@ -69,7 +73,8 @@ tc g3-large01 gen_random n=20 m=3 K=40
 tc g3-large02 gen_random n=20 m=3 K=100
 tc g3-large03 gen_random n=20 m=3 K=600
 tc g3-large04 gen_random n=20 m=3 K=798
-
+tc g3-antiperm01 gen_permkill n=20 m=3
+tc g3-antiperm02 gen_permkill n=20 m=3
 
 group group4 47
 include_group sample
@@ -96,3 +101,7 @@ tc g4-large04 gen_random n=20 m=52 K=1984
 tc g4-large05 gen_random n=19 m=260 
 tc g4-large06 gen_random n=19 m=123
 tc g4-large07 gen_random n=18 m=10 K=2901
+tc g4-antiperm01 gen_permkill n=20 m=20
+tc g4-antiperm02 gen_permkill n=20 m=40
+tc g4-large08 gen_random n=20 m=13 
+tc g4-large09 gen_random n=19 m=14
